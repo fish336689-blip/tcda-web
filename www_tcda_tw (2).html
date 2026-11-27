@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>桃園市無人機協會 | 官方網站 (www.tcda.tw)</title>
+  <meta name="description" content="桃園市無人機協會官方網站 www.tcda.tw，推廣無人機足球講師培訓、民航局無人機操作證考照輔導與青少年 STEAM 航空科技體驗營。" />
+
+  <!-- Google Fonts: Inter & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome 6 圖示庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN 與藍綠橙科技體育主題色設定 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '"Noto Sans TC"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              blue: '#0B3C5D',      // 深科技藍
+              blueDark: '#07273D',  // 深藍底色
+              sky: '#0EA5E9',       // 活力亮藍
+              emerald: '#10B981',   // 活力青綠
+              orange: '#F97316',    // 動感亮橙
+              orangeDark: '#EA580C',// 深橙互動色
+              surface: '#F8FAFC',   // 淺灰白背景
+            },
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-brand-surface text-slate-800 font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+  <!-- =========================================================
+       1. 頂部固定導覽列 (Sticky Header)
+  ========================================================== -->
+  <header id="site-header" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-shadow duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <!-- 左側協會名稱與網址 -->
+        <a href="#top" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-blue via-brand-sky to-brand-emerald flex items-center justify-center text-white shadow-md ring-2 ring-brand-emerald/25 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-helicopter text-lg"></i>
+          </div>
+          <div class="leading-tight">
+            <span class="block text-lg sm:text-xl font-black text-brand-blue tracking-wide group-hover:text-brand-sky transition">
+              桃園市無人機協會
+            </span>
+            <span class="block text-xs font-bold text-brand-orange tracking-wider">
+              www.tcda.tw
+            </span>
+          </div>
+        </a>
+
+        <!-- 中間導覽連結 (桌機版) -->
+        <nav class="hidden md:flex items-center gap-2" aria-label="主要導覽列">
+          <a href="#courses" class="px-4 py-2 rounded-xl text-sm font-bold text-brand-blue bg-sky-50 hover:bg-sky-100 transition">
+            熱門課程
+          </a>
+          <a href="#activities" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-100 transition">
+            活動花絮
+          </a>
+          <a href="#contact" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-brand-blue hover:bg-slate-100 transition">
+            聯絡我們
+          </a>
+        </nav>
+
+        <!-- 右側立即報名按鈕與手機版選單開關 -->
+        <div class="flex items-center gap-2.5 sm:gap-3">
+          <a
+            href="https://join.dronesoccertw.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orangeDark text-white text-sm font-bold px-4 sm:px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition active:scale-95"
+          >
+            <i class="fa-solid fa-pen-to-square text-xs"></i>
+            <span>立即報名</span>
+          </a>
+
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl text-brand-blue hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-sky transition"
+            aria-label="展開行動選單"
+            aria-expanded="false"
+          >
+            <i id="menu-icon-open" class="fa-solid fa-bars text-xl"></i>
+            <i id="menu-icon-close" class="fa-solid fa-xmark text-xl hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 手機版展開選單 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 shadow-lg">
+      <div class="px-4 py-3 space-y-1.5">
+        <a href="#courses" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-brand-blue bg-sky-50 hover:bg-sky-100 transition">
+          熱門課程
+        </a>
+        <a href="#activities" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-blue transition">
+          活動花絮
+        </a>
+        <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-blue transition">
+          聯絡我們
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="flex-grow">
+
+    <!-- =========================================================
+         Hero 精簡科技主視覺
+    ========================================================== -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-brand-blueDark via-brand-blue to-emerald-800 text-white border-b-4 border-brand-orange">
+      <!-- 背景科技光暈 -->
+      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-sky/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-brand-orange/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18 lg:py-20">
+        <div class="max-w-3xl space-y-5">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sky-200 text-xs sm:text-sm font-bold tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+            <span>桃園市無人機協會官方網站・www.tcda.tw</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight">
+            推動無人機科技教育・<br class="hidden sm:inline" />
+            打造桃園<span class="text-brand-orange">無人機足球</span>與專業培訓基地
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl">
+            結合無人機足球推廣講師培訓、民航局操作證考照輔導與青少年 STEAM 航空體驗營，歡迎各界熱血夥伴與家長孩子一同起飛！
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            <a
+              href="https://join.dronesoccertw.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orangeDark text-white font-bold px-7 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition active:scale-95"
+            >
+              <span>立即報名推廣講師訓</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+            </a>
+            <a
+              href="#courses"
+              class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold px-7 py-3.5 rounded-xl backdrop-blur-sm transition"
+            >
+              <span>瀏覽熱門培訓課程</span>
+              <i class="fa-solid fa-chevron-down text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         2. 熱門培訓課程與營隊 (#courses)
+            - 上方：熱門課程輪播 (Course Carousel，16:9 完整呈現不裁切)
+            - 下方：平衡 2 欄等高卡片 (不重複講師訓)
+    ========================================================== -->
+    <section id="courses" class="py-16 sm:py-20 bg-brand-surface scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- 區塊標題 -->
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-brand-emerald">Featured Courses</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-blue mt-1">熱門培訓課程與營隊</h2>
+          <div class="w-16 h-1 bg-brand-orange mx-auto mt-3 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base mt-3">
+            精選無人機足球師資培訓、民航局考照輔導與青少年 STEAM 體驗營，點選左右箭頭或圓點即可切換瀏覽。
+          </p>
+        </div>
+
+        <!-- =====================================================
+             2A. 上方：熱門課程輪播 (Course Carousel)
+        ====================================================== -->
+        <div id="course-carousel" class="max-w-5xl mx-auto mb-12">
+          <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+
+            <!-- 16:9 圖片顯示區 (深色漸層底 + object-contain 確保海報完整不裁切) -->
+            <div class="relative bg-gradient-to-br from-brand-blueDark via-slate-900 to-brand-blue group">
+              <div id="course-carousel-viewport" class="relative w-full aspect-video overflow-hidden touch-pan-y select-none">
+                <div id="course-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+                  <!-- 由 JavaScript 動態渲染 3 張熱門課程輪播圖 -->
+                </div>
+              </div>
+
+              <!-- 左箭頭 -->
+              <button
+                id="course-prev-btn"
+                type="button"
+                aria-label="上一門熱門課程"
+                class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/75 hover:bg-brand-orange text-white border border-white/25 backdrop-blur-sm flex items-center justify-center shadow-lg transition active:scale-95"
+              >
+                <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
+              </button>
+
+              <!-- 右箭頭 -->
+              <button
+                id="course-next-btn"
+                type="button"
+                aria-label="下一門熱門課程"
+                class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/75 hover:bg-brand-orange text-white border border-white/25 backdrop-blur-sm flex items-center justify-center shadow-lg transition active:scale-95"
+              >
+                <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
+              </button>
+
+              <!-- 右上角頁碼與點擊放大提示 -->
+              <div class="absolute top-3.5 right-3.5 z-20 flex items-center gap-2 pointer-events-none">
+                <span id="course-slide-counter" class="px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-sm text-white text-xs font-bold border border-white/20">
+                  1 / 3
+                </span>
+              </div>
+            </div>
+
+            <!-- 圖片下方獨立資訊欄 (絕不遮擋海報任何文字) -->
+            <div id="course-carousel-info" class="p-6 sm:p-8 bg-white border-t border-slate-200">
+              <!-- 由 JavaScript 依目前輪播頁動態渲染課程詳情與按鈕 -->
+            </div>
+          </div>
+
+          <!-- 底部圓點指示器 -->
+          <div id="course-carousel-dots" class="flex items-center justify-center gap-2.5 mt-5" role="tablist" aria-label="熱門課程輪播頁籤">
+            <!-- 由 JavaScript 動態渲染 -->
+          </div>
+        </div>
+
+        <!-- =====================================================
+             2B. 下方：平衡 2 欄等高課程卡片 (不重複講師訓)
+        ====================================================== -->
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+
+          <!-- 左卡：民航局無人機操作證考照輔導班 -->
+          <article class="bg-white rounded-3xl shadow-md hover:shadow-xl border border-slate-200 p-6 sm:p-8 flex flex-col h-full transition">
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-sky-100 text-brand-blue text-xs font-bold">專業證照</span>
+              <span class="px-3 py-1 rounded-full bg-orange-100 text-brand-orangeDark text-xs font-bold">每月開班</span>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-brand-blue mb-2.5">
+              民航局無人機操作證考照輔導班
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-5">
+              針對 2 公斤以上普通操作證與專業基本級／高級術科提供實地模擬訓練，由合格專業教練一對一指導考照技巧。
+            </p>
+
+            <!-- 課程資訊盒 -->
+            <div class="bg-slate-50 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-2.5 text-sm mb-6">
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-slate-500 shrink-0">日期</span>
+                <span class="font-semibold text-slate-800 text-right">每月雙週末固定開班</span>
+              </div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-slate-500 shrink-0">地點</span>
+                <span class="font-semibold text-slate-800 text-right">桃園市中壢區合法培訓場地</span>
+              </div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-slate-500 shrink-0">名額</span>
+                <span class="font-bold text-brand-emerald text-right">精緻小班制 4 人</span>
+              </div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-slate-500 shrink-0">費用</span>
+                <span class="font-black text-brand-orangeDark text-base text-right">NT$ 15,000／人</span>
+              </div>
+
+              <!-- 考照專屬聯絡窗口 -->
+              <div class="pt-3 mt-2 border-t border-slate-200 space-y-1.5 text-xs sm:text-sm">
+                <p class="font-bold text-brand-blue flex items-center gap-1.5">
+                  <i class="fa-solid fa-id-badge text-brand-sky"></i>
+                  <span>考照專屬聯絡窗口</span>
+                </p>
+                <p class="text-slate-700">
+                  小呂教官｜電話
+                  <a href="tel:0980111995" class="font-bold text-brand-orangeDark hover:underline">0980-111-995</a>
+                </p>
+                <p class="text-slate-700 break-all">
+                  Email：
+                  <a href="mailto:uav.bst@gmail.com" class="font-semibold text-brand-sky hover:underline">uav.bst@gmail.com</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- 底部對齊按鈕 -->
+            <button
+              type="button"
+              onclick="openCourseModal('license')"
+              class="mt-auto w-full py-3.5 px-5 rounded-xl bg-brand-blue hover:bg-brand-blueDark text-white font-bold text-sm shadow-sm hover:shadow-md transition active:scale-95"
+            >
+              查看簡章／立即報名
+            </button>
+          </article>
+
+          <!-- 右卡：青少年無人機足球 STEAM 體驗營 -->
+          <article class="bg-white rounded-3xl shadow-md hover:shadow-xl border border-slate-200 p-6 sm:p-8 flex flex-col h-full transition">
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">STEAM 教育</span>
+              <span class="px-3 py-1 rounded-full bg-orange-100 text-brand-orangeDark text-xs font-bold">週末營隊</span>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-brand-blue mb-2.5">
+              青少年無人機足球 STEAM 體驗營
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-5">
+              結合科學、技術、工程、藝術與數學的多學科體驗，透過球機組裝、基礎操控與團體對戰，培養空間感與團隊合作精神。
+            </p>
+
+            <!-- 課程資訊盒 -->
+            <div class="bg-slate-50 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-2.5 text-sm mb-6">
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-slate-500 shrink-0">日期</span>
+                <span class="font-semibold text-slate-800 text-right">每週六、日（半日／全日營）</span>
+              </div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-slate-500 shrink-0">地點</span>
+                <span class="font-semibold text-slate-800 text-right">中壢區中小學合作場地</span>
+              </div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-slate-500 shrink-0">名額</span>
+                <span class="font-bold text-brand-emerald text-right">每梯次 24 名</span>
+              </div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-slate-500 shrink-0">費用</span>
+                <span class="font-black text-brand-orangeDark text-base text-right">NT$ 1,800／人</span>
+              </div>
+
+              <!-- 營隊聯絡窗口 -->
+              <div class="pt-3 mt-2 border-t border-slate-200 space-y-1.5 text-xs sm:text-sm">
+                <p class="font-bold text-brand-blue flex items-center gap-1.5">
+                  <i class="fa-solid fa-headset text-brand-emerald"></i>
+                  <span>營隊洽詢窗口</span>
+                </p>
+                <p class="text-slate-700">桃園市無人機協會活動組</p>
+                <p class="text-slate-700">
+                  陳先生｜電話
+                  <a href="tel:0955285016" class="font-bold text-brand-orangeDark hover:underline">0955-285-016</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- 底部對齊按鈕 -->
+            <button
+              type="button"
+              onclick="openCourseModal('steam')"
+              class="mt-auto w-full py-3.5 px-5 rounded-xl bg-brand-blue hover:bg-brand-blueDark text-white font-bold text-sm shadow-sm hover:shadow-md transition active:scale-95"
+            >
+              查看簡章／立即報名
+            </button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. 活動花絮輪播 (#activities)
+    ========================================================== -->
+    <section id="activities" class="py-16 sm:py-20 bg-white border-y border-slate-200/80 scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-brand-sky">Event Highlights</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-blue mt-1">活動花絮</h2>
+          <div class="w-16 h-1 bg-brand-orange mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <!-- 獨立的 16:9 活動相片輪播 -->
+        <div id="activity-carousel" class="max-w-5xl mx-auto">
+          <div class="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-gradient-to-br from-brand-blueDark to-slate-900 group">
+            <div id="activity-carousel-viewport" class="relative w-full aspect-video overflow-hidden touch-pan-y select-none">
+              <div id="activity-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+                <!-- 由 JavaScript 動態渲染 3 張活動花絮 -->
+              </div>
+            </div>
+
+            <!-- 左箭頭 -->
+            <button
+              id="activity-prev-btn"
+              type="button"
+              aria-label="上一張活動花絮"
+              class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/75 hover:bg-brand-orange text-white border border-white/25 backdrop-blur-sm flex items-center justify-center shadow-lg transition active:scale-95"
+            >
+              <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
+            </button>
+
+            <!-- 右箭頭 -->
+            <button
+              id="activity-next-btn"
+              type="button"
+              aria-label="下一張活動花絮"
+              class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/75 hover:bg-brand-orange text-white border border-white/25 backdrop-blur-sm flex items-center justify-center shadow-lg transition active:scale-95"
+            >
+              <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
+            </button>
+
+            <!-- 右上角頁碼 -->
+            <div class="absolute top-3.5 right-3.5 z-20 pointer-events-none">
+              <span id="activity-slide-counter" class="px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-sm text-white text-xs font-bold border border-white/20">
+                1 / 3
+              </span>
+            </div>
+          </div>
+
+          <!-- 圖片下方獨立圖說欄 -->
+          <div class="mt-4 bg-brand-surface border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 id="activity-caption-title" class="text-lg sm:text-xl font-black text-brand-blue">載入中...</h3>
+              <p id="activity-caption-desc" class="text-sm text-slate-600 mt-1"></p>
+            </div>
+            <button
+              id="activity-zoom-btn"
+              type="button"
+              class="shrink-0 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-brand-blue border border-slate-300 text-xs sm:text-sm font-bold transition"
+            >
+              <i class="fa-solid fa-magnifying-glass-plus text-brand-orange"></i>
+              <span>放大檢視</span>
+            </button>
+          </div>
+
+          <!-- 底部圓點指示器 -->
+          <div id="activity-carousel-dots" class="flex items-center justify-center gap-2.5 mt-5" role="tablist" aria-label="活動花絮頁籤">
+            <!-- 由 JavaScript 動態渲染 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. 聯絡我們 (#contact)
+    ========================================================== -->
+    <section id="contact" class="py-16 sm:py-20 bg-brand-surface scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-brand-emerald">Contact Us</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-blue mt-1">聯絡我們</h2>
+          <div class="w-16 h-1 bg-brand-orange mx-auto mt-3 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base mt-3">
+            歡迎依照您的需求聯繫對應專屬窗口，點擊電話或 Email 即可直接撥號與寄信。
+          </p>
+        </div>
+
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- 窗口 1：無人機足球推廣講師訓洽詢 -->
+          <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-brand-orangeDark text-xs font-bold mb-4">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span>無人機足球推廣講師訓洽詢</span>
+              </span>
+              <h3 class="text-xl font-black text-brand-blue mb-2">推廣講師訓／體驗營窗口</h3>
+              <p class="text-sm text-slate-600 mb-5">
+                無人機足球推廣講師訓、青少年 STEAM 體驗營、學校社團合作與協會一般事務洽詢。
+              </p>
+              <div class="space-y-3 text-sm">
+                <p class="flex items-center gap-3 text-slate-700">
+                  <i class="fa-solid fa-user text-brand-emerald w-5 text-center"></i>
+                  <span>聯絡人：<strong class="text-brand-blue">陳先生</strong></span>
+                </p>
+                <p class="flex items-center gap-3 text-slate-700">
+                  <i class="fa-solid fa-phone text-brand-orange w-5 text-center"></i>
+                  <span>聯絡電話：<a href="tel:0955285016" class="font-bold text-brand-orangeDark hover:underline">0955-285-016</a></span>
+                </p>
+                <p class="flex items-center gap-3 text-slate-700">
+                  <i class="fa-solid fa-globe text-brand-sky w-5 text-center"></i>
+                  <span>官方網站：<a href="https://www.tcda.tw" class="font-semibold text-brand-sky hover:underline">www.tcda.tw</a></span>
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 pt-5 border-t border-slate-200 flex flex-wrap gap-3">
+              <a
+                href="tel:0955285016"
+                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-orange hover:bg-brand-orangeDark text-white text-sm font-bold shadow-sm transition"
+              >
+                <i class="fa-solid fa-phone"></i>
+                <span>撥打電話</span>
+              </a>
+              <a
+                href="https://join.dronesoccertw.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-brand-blue text-sm font-bold transition"
+              >
+                <span>線上報名講師訓</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 窗口 2：民航局考照輔導洽詢 -->
+          <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-100 text-brand-blue text-xs font-bold mb-4">
+                <i class="fa-solid fa-id-card"></i>
+                <span>民航局考照輔導洽詢</span>
+              </span>
+              <h3 class="text-xl font-black text-brand-blue mb-2">無人機操作證考照專屬窗口</h3>
+              <p class="text-sm text-slate-600 mb-5">
+                2 公斤以上普通操作證、專業基本級／高級術科考照輔導班、開班梯次與學科術科諮詢。
+              </p>
+              <div class="space-y-3 text-sm">
+                <p class="flex items-center gap-3 text-slate-700">
+                  <i class="fa-solid fa-user-tie text-brand-emerald w-5 text-center"></i>
+                  <span>聯絡人：<strong class="text-brand-blue">小呂教官</strong></span>
+                </p>
+                <p class="flex items-center gap-3 text-slate-700">
+                  <i class="fa-solid fa-phone text-brand-orange w-5 text-center"></i>
+                  <span>聯絡電話：<a href="tel:0980111995" class="font-bold text-brand-orangeDark hover:underline">0980-111-995</a></span>
+                </p>
+                <p class="flex items-center gap-3 text-slate-700 break-all">
+                  <i class="fa-solid fa-envelope text-brand-sky w-5 text-center"></i>
+                  <span>Email：<a href="mailto:uav.bst@gmail.com" class="font-semibold text-brand-sky hover:underline">uav.bst@gmail.com</a></span>
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 pt-5 border-t border-slate-200 flex flex-wrap gap-3">
+              <a
+                href="tel:0980111995"
+                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-blueDark text-white text-sm font-bold shadow-sm transition"
+              >
+                <i class="fa-solid fa-phone"></i>
+                <span>撥打考照專線</span>
+              </a>
+              <a
+                href="mailto:uav.bst@gmail.com"
+                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-brand-blue text-sm font-bold transition"
+              >
+                <i class="fa-solid fa-envelope"></i>
+                <span>寄送 Email</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       頁尾 (Footer)
+  ========================================================== -->
+  <footer class="bg-brand-blueDark text-slate-300 border-t-4 border-brand-emerald">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+        <div>
+          <p class="text-base font-black text-white">桃園市無人機協會</p>
+          <p class="text-xs text-slate-400 mt-1">官方網站：www.tcda.tw</p>
+        </div>
+        <div class="text-xs text-slate-400 space-y-1 md:text-right">
+          <p>無人機足球推廣講師訓：陳先生 0955-285-016 ｜ 民航局考照輔導：小呂教官 0980-111-995</p>
+          <p>&copy; 2026 桃園市無人機協會 All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       5A. 海報大圖燈箱 Modal (Lightbox)
+  ========================================================== -->
+  <div
+    id="lightbox-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-title"
+  >
+    <div class="relative w-full max-w-5xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/15">
+      <div class="flex items-center justify-between px-5 py-3.5 bg-brand-blue border-b border-white/10 text-white">
+        <h3 id="lightbox-title" class="text-sm sm:text-base font-bold truncate pr-4">海報大圖預覽</h3>
+        <button
+          type="button"
+          onclick="closeLightbox()"
+          class="w-9 h-9 rounded-xl hover:bg-white/15 flex items-center justify-center transition"
+          aria-label="關閉大圖燈箱"
+        >
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+      <div class="p-3 sm:p-5 bg-slate-950">
+        <div class="w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center">
+          <img
+            id="lightbox-img"
+            src=""
+            alt="大圖預覽"
+            class="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       5B. 課程簡章彈出視窗 Modal (courseCatalog.license & steam)
+  ========================================================== -->
+  <div
+    id="course-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm overflow-y-auto"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="course-modal-title"
+  >
+    <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden my-8 border border-slate-200">
+      <!-- 頂部標題列 -->
+      <div class="bg-gradient-to-r from-brand-blueDark to-brand-blue px-6 py-5 text-white flex items-center justify-between border-b-4 border-brand-orange">
+        <div>
+          <span id="course-modal-badge" class="text-xs font-extrabold uppercase tracking-wider text-emerald-300">課程簡章</span>
+          <h3 id="course-modal-title" class="text-xl font-black mt-0.5">課程名稱</h3>
+        </div>
+        <button
+          type="button"
+          onclick="closeCourseModal()"
+          class="w-9 h-9 rounded-xl hover:bg-white/15 flex items-center justify-center transition"
+          aria-label="關閉課程簡章視窗"
+        >
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+
+      <!-- 內容區塊 -->
+      <div class="p-6 max-h-[78vh] overflow-y-auto space-y-5">
+        <!-- 核心摘要格 -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center">
+          <div>
+            <p class="text-xs text-slate-500">課程日期</p>
+            <p id="course-modal-date" class="text-xs sm:text-sm font-bold text-brand-blue mt-1"></p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500">上課地點</p>
+            <p id="course-modal-location" class="text-xs sm:text-sm font-bold text-brand-blue mt-1"></p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500">招收名額</p>
+            <p id="course-modal-quota" class="text-xs sm:text-sm font-bold text-brand-emerald mt-1"></p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500">課程費用</p>
+            <p id="course-modal-fee" class="text-xs sm:text-sm font-black text-brand-orangeDark mt-1"></p>
+          </div>
+        </div>
+
+        <!-- 課程大綱 -->
+        <div>
+          <h4 class="text-sm font-black text-brand-blue mb-2.5 flex items-center gap-2">
+            <span class="w-1.5 h-4 rounded-full bg-brand-orange"></span>
+            <span>課程大綱與重點</span>
+          </h4>
+          <div id="course-modal-syllabus" class="space-y-2.5 text-sm"></div>
+        </div>
+
+        <!-- 專屬聯絡窗口 -->
+        <div id="course-modal-contact" class="bg-sky-50 border border-sky-200 rounded-2xl p-4 sm:p-5 space-y-2 text-sm text-slate-700"></div>
+
+        <!-- 底部操作列 -->
+        <div id="course-modal-actions" class="pt-3 border-t border-slate-200 flex flex-col sm:flex-row justify-end gap-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JavaScript：導覽選單、熱門課程輪播、活動花絮輪播與彈窗控制
+  ========================================================== -->
+  <script>
+    // =========================================================
+    // 1. 行動版導覽選單與捲動陰影
+    // =========================================================
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+    const siteHeader = document.getElementById('site-header');
+
+    function toggleMobileMenu() {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      menuIconOpen.classList.toggle('hidden', isHidden);
+      menuIconClose.classList.toggle('hidden', !isHidden);
+      mobileMenuBtn.setAttribute('aria-expanded', String(isHidden));
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (!mobileMenu.classList.contains('hidden')) {
+          toggleMobileMenu();
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      siteHeader.classList.toggle('shadow-md', window.scrollY > 12);
+    });
+
+    // =========================================================
+    // 共用：處理 instructor-poster.jpg 載入失敗時的備用圖與提示
+    // =========================================================
+    const POSTER_FALLBACK_URL =
+      'https://placehold.co/1280x720/0B3C5D/FFFFFF?text=%E7%84%A1%E4%BA%BA%E6%A9%9F%E8%B6%B3%E7%90%83%E6%8E%A8%E5%BB%A3%E8%AC%9B%E5%B8%AB%E6%8B%9B%E7%94%9F%E4%B8%AD%EF%BC%81';
+
+    function handlePosterFallback(imgEl, fallbackUrl, hintId) {
+      imgEl.onerror = null;
+      imgEl.src = fallbackUrl;
+      if (hintId) {
+        const hintEl = document.getElementById(hintId);
+        if (hintEl) hintEl.classList.remove('hidden');
+      }
+    }
+
+    // =========================================================
+    // 2. 熱門課程輪播 (Course Carousel) 資料與邏輯
+    // =========================================================
+    const courseSlides = [
+      {
+        image: 'instructor-poster.jpg',
+        fallback: POSTER_FALLBACK_URL,
+        isPoster: true,
+        badge: '🔥 熱烈招生中',
+        badgeClass: 'bg-brand-orange text-white',
+        title: '無人機足球推廣講師訓 — 熱烈招生中！',
+        desc: '歡迎銀髮族、第三人生、各界熱血人士踴躍報名！培訓完成後可深入學校推廣、擔任社團老師與辦理營隊。',
+        badges: ['無人機入門', '進學校推廣', '擔任社團老師', '辦營隊'],
+        meta: [
+          { icon: 'fa-regular fa-calendar-days', label: '時間', value: '2027/1/9・10・23' },
+          { icon: 'fa-solid fa-location-dot', label: '地點', value: '健行科技大學' },
+          { icon: 'fa-solid fa-tag', label: '費用', value: 'NT$ 3,000／人', highlight: true },
+          { icon: 'fa-solid fa-phone', label: '聯絡人', value: '陳先生 0955-285-016', tel: 'tel:0955285016' },
+        ],
+        ctaType: 'link',
+        ctaText: '前往線上報名',
+        ctaHref: 'https://join.dronesoccertw.org/',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=1280',
+        fallback: 'https://placehold.co/1280x720/0B3C5D/FFFFFF?text=%E6%B0%91%E8%88%AA%E5%B1%80%E7%84%A1%E4%BA%BA%E6%A9%9F%E6%93%8D%E4%BD%9C%E8%AD%89%E8%80%83%E7%85%A7%E8%BC%94%E5%B0%8E%E7%8F%AD',
+        isPoster: false,
+        badge: '專業證照',
+        badgeClass: 'bg-sky-100 text-brand-blue',
+        title: '民航局無人機操作證考照輔導班',
+        desc: '針對 2 公斤以上普通操作證與專業基本級／高級術科實地模擬訓練，合格教官一對一指導。',
+        badges: ['精緻小班制 4 人', '合格培訓場地', '實地模擬考'],
+        meta: [
+          { icon: 'fa-regular fa-calendar-days', label: '日期', value: '每月雙週末固定開班' },
+          { icon: 'fa-solid fa-users', label: '名額', value: '精緻小班制 4 人' },
+          { icon: 'fa-solid fa-tag', label: '費用', value: 'NT$ 15,000／人', highlight: true },
+          { icon: 'fa-solid fa-user-tie', label: '聯絡人', value: '小呂教官 0980-111-995', tel: 'tel:0980111995', email: 'uav.bst@gmail.com' },
+        ],
+        ctaType: 'modal',
+        ctaText: '查看簡章',
+        modalKey: 'license',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&q=80&w=1280',
+        fallback: 'https://placehold.co/1280x720/10B981/FFFFFF?text=%E9%9D%92%E5%B0%91%E5%B9%B4%E7%84%A1%E4%BA%BA%E6%A9%9F%E8%B6%B3%E7%90%83+STEAM+%E9%AB%94%E9%A9%97%E7%87%9F',
+        isPoster: false,
+        badge: 'STEAM 教育',
+        badgeClass: 'bg-emerald-100 text-emerald-800',
+        title: '青少年無人機足球 STEAM 體驗營',
+        desc: '結合科學、技術、工程、藝術與數學，透過球機組裝、飛行操控與分組對戰，激發孩子科技興趣。',
+        badges: ['每梯次 24 名', '半日／全日營', '團隊攻防對戰'],
+        meta: [
+          { icon: 'fa-regular fa-calendar-days', label: '日期', value: '每週六、日開辦' },
+          { icon: 'fa-solid fa-location-dot', label: '地點', value: '中壢區中小學合作場地' },
+          { icon: 'fa-solid fa-users', label: '名額', value: '每梯次 24 名' },
+          { icon: 'fa-solid fa-tag', label: '費用', value: 'NT$ 1,800／人', highlight: true },
+        ],
+        ctaType: 'modal',
+        ctaText: '查看簡章',
+        modalKey: 'steam',
+      },
+    ];
+
+    const courseTrack = document.getElementById('course-carousel-track');
+    const courseDots = document.getElementById('course-carousel-dots');
+    const courseCounter = document.getElementById('course-slide-counter');
+    const courseInfo = document.getElementById('course-carousel-info');
+    const coursePrevBtn = document.getElementById('course-prev-btn');
+    const courseNextBtn = document.getElementById('course-next-btn');
+    const courseViewport = document.getElementById('course-carousel-viewport');
+    const courseCarouselEl = document.getElementById('course-carousel');
+
+    let courseActiveIdx = 0;
+    let courseTimer = null;
+
+    function buildCourseCarousel() {
+      courseTrack.innerHTML = courseSlides
+        .map((slide, idx) => {
+          const hintId = slide.isPoster ? `course-poster-hint-${idx}` : '';
+          return `
+            <div
+              class="w-full h-full shrink-0 relative cursor-pointer flex items-center justify-center"
+              onclick="openLightbox('${slide.image}', '${slide.title}', '${slide.fallback}')"
+            >
+              <img
+                src="${slide.image}"
+                alt="${slide.title}"
+                onerror="handlePosterFallback(this, '${slide.fallback}', '${hintId}')"
+                class="w-full h-full object-contain"
+                loading="${idx === 0 ? 'eager' : 'lazy'}"
+              />
+              ${
+                slide.isPoster
+                  ? `<div id="${hintId}" class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-amber-500/95 text-slate-950 text-xs font-bold shadow-lg whitespace-nowrap">
+                       <i class="fa-solid fa-circle-info mr-1"></i>預覽提示：請將海報改名為 instructor-poster.jpg 上傳至 GitHub 即可顯示原圖
+                     </div>`
+                  : ''
+              }
+            </div>
+          `;
+        })
+        .join('');
+
+      courseDots.innerHTML = courseSlides
+        .map(
+          (slide, idx) => `
+          <button
+            type="button"
+            data-course-idx="${idx}"
+            aria-label="切換至熱門課程第 ${idx + 1} 張：${slide.title}"
+            class="course-dot h-2.5 rounded-full transition-all duration-300 ${idx === 0 ? 'w-8 bg-brand-orange' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}"
+          ></button>`
+        )
+        .join('');
+
+      courseDots.querySelectorAll('.course-dot').forEach((dot) => {
+        dot.addEventListener('click', () => {
+          goToCourseSlide(Number(dot.getAttribute('data-course-idx')));
+          restartCourseTimer();
+        });
+      });
+
+      updateCourseCarouselUI();
+    }
+
+    function updateCourseCarouselUI() {
+      const item = courseSlides[courseActiveIdx];
+      courseTrack.style.transform = `translateX(-${courseActiveIdx * 100}%)`;
+      courseCounter.textContent = `${courseActiveIdx + 1} / ${courseSlides.length}`;
+
+      // 更新底部圓點樣式
+      courseDots.querySelectorAll('.course-dot').forEach((dot, idx) => {
+        dot.className = `course-dot h-2.5 rounded-full transition-all duration-300 ${
+          idx === courseActiveIdx ? 'w-8 bg-brand-orange' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+        }`;
+      });
+
+      // 渲染圖片下方獨立課程資訊欄
+      const badgesHtml = item.badges
+        .map(
+          (b) => `
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold">
+            <i class="fa-solid fa-check text-brand-emerald"></i>${b}
+          </span>`
+        )
+        .join('');
+
+      const metaHtml = item.meta
+        .map((m) => {
+          const valContent = m.tel
+            ? `<a href="${m.tel}" class="font-bold text-brand-orangeDark hover:underline">${m.value}</a>`
+            : `<span class="${m.highlight ? 'font-black text-brand-orangeDark' : 'font-bold text-brand-blue'}">${m.value}</span>`;
+          const emailLine = m.email
+            ? `<a href="mailto:${m.email}" class="block text-xs text-brand-sky hover:underline mt-0.5 break-all">${m.email}</a>`
+            : '';
+          return `
+            <div class="flex items-start gap-2.5 bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5">
+              <i class="${m.icon} text-brand-sky mt-0.5 shrink-0"></i>
+              <div class="min-w-0">
+                <p class="text-[11px] text-slate-500">${m.label}</p>
+                <div class="text-xs sm:text-sm leading-snug">${valContent}</div>
+                ${emailLine}
+              </div>
+            </div>`;
+        })
+        .join('');
+
+      const actionBtnHtml =
+        item.ctaType === 'link'
+          ? `<a
+               href="${item.ctaHref}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orangeDark text-white font-black text-sm sm:text-base px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition active:scale-95"
+             >
+               <span>${item.ctaText}</span>
+               <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+             </a>`
+          : `<button
+               type="button"
+               onclick="openCourseModal('${item.modalKey}')"
+               class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blueDark text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition active:scale-95"
+             >
+               <span>${item.ctaText}</span>
+               <i class="fa-solid fa-file-lines text-xs"></i>
+             </button>`;
+
+      courseInfo.innerHTML = `
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-5">
+          <div class="space-y-3 flex-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-extrabold ${item.badgeClass}">${item.badge}</span>
+              <button
+                type="button"
+                onclick="openLightbox('${item.image}', '${item.title}', '${item.fallback}')"
+                class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition"
+              >
+                <i class="fa-solid fa-magnifying-glass-plus text-brand-orange"></i>放大海報
+              </button>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-brand-blue">${item.title}</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">${item.desc}</p>
+            <div class="flex flex-wrap gap-2 pt-1">${badgesHtml}</div>
+          </div>
+          <div class="shrink-0 flex flex-col sm:flex-row lg:flex-col gap-2.5 lg:pt-2">
+            ${actionBtnHtml}
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5 pt-5 border-t border-slate-200/80">
+          ${metaHtml}
+        </div>
+      `;
+    }
+
+    function goToCourseSlide(idx) {
+      courseActiveIdx = (idx + courseSlides.length) % courseSlides.length;
+      updateCourseCarouselUI();
+    }
+
+    function startCourseTimer() {
+      stopCourseTimer();
+      courseTimer = setInterval(() => goToCourseSlide(courseActiveIdx + 1), 5500);
+    }
+
+    function stopCourseTimer() {
+      if (courseTimer) {
+        clearInterval(courseTimer);
+        courseTimer = null;
+      }
+    }
+
+    function restartCourseTimer() {
+      stopCourseTimer();
+      startCourseTimer();
+    }
+
+    coursePrevBtn.addEventListener('click', () => {
+      goToCourseSlide(courseActiveIdx - 1);
+      restartCourseTimer();
+    });
+
+    courseNextBtn.addEventListener('click', () => {
+      goToCourseSlide(courseActiveIdx + 1);
+      restartCourseTimer();
+    });
+
+    courseCarouselEl.addEventListener('mouseenter', stopCourseTimer);
+    courseCarouselEl.addEventListener('mouseleave', startCourseTimer);
+
+    // 觸控左右滑動支援 (熱門課程輪播)
+    let courseTouchX = 0;
+    courseViewport.addEventListener('touchstart', (e) => {
+      courseTouchX = e.changedTouches[0].clientX;
+      stopCourseTimer();
+    }, { passive: true });
+
+    courseViewport.addEventListener('touchend', (e) => {
+      const diff = e.changedTouches[0].clientX - courseTouchX;
+      if (Math.abs(diff) > 45) {
+        goToCourseSlide(diff < 0 ? courseActiveIdx + 1 : courseActiveIdx - 1);
+      }
+      startCourseTimer();
+    }, { passive: true });
+
+    // =========================================================
+    // 3. 活動花絮輪播 (Activity Carousel) 資料與邏輯
+    // =========================================================
+    const activitySlides = [
+      {
+        image: 'instructor-poster.jpg',
+        fallback: POSTER_FALLBACK_URL,
+        fitClass: 'object-contain',
+        title: '無人機足球推廣講師招生中！',
+        desc: '2027/1/9・10・23 於健行科技大學開課，費用 NT$ 3,000／人，歡迎各界熱血夥伴加入推廣行列。',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=1280',
+        fallback: 'https://placehold.co/1280x720/0B3C5D/FFFFFF?text=%E7%84%A1%E4%BA%BA%E6%A9%9F%E8%80%83%E7%85%A7%E5%AF%A6%E5%9C%B0%E8%A8%93%E7%B7%B4',
+        fitClass: 'object-cover',
+        title: '民航局無人機考照實地模擬訓練',
+        desc: '桃園市中壢區合法培訓場地，精緻小班制 4 人由小呂教官團隊實地指導考照術科技巧。',
+      },
+      {
+        image: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&q=80&w=1280',
+        fallback: 'https://placehold.co/1280x720/10B981/FFFFFF?text=%E9%9D%92%E5%B0%91%E5%B9%B4%E7%84%A1%E4%BA%BA%E6%A9%9F%E8%B6%B3%E7%90%83%E9%AB%94%E9%A9%97%E8%8A%B1%E7%B5%AE',
+        fitClass: 'object-cover',
+        title: '青少年無人機足球 STEAM 體驗花絮',
+        desc: '結合理論科普、球機組裝與團體對戰，讓孩子在安全有趣的環境中體驗未來航空科技。',
+      },
+    ];
+
+    const activityTrack = document.getElementById('activity-carousel-track');
+    const activityDots = document.getElementById('activity-carousel-dots');
+    const activityCounter = document.getElementById('activity-slide-counter');
+    const activityCaptionTitle = document.getElementById('activity-caption-title');
+    const activityCaptionDesc = document.getElementById('activity-caption-desc');
+    const activityZoomBtn = document.getElementById('activity-zoom-btn');
+    const activityPrevBtn = document.getElementById('activity-prev-btn');
+    const activityNextBtn = document.getElementById('activity-next-btn');
+    const activityViewport = document.getElementById('activity-carousel-viewport');
+    const activityCarouselEl = document.getElementById('activity-carousel');
+
+    let activityActiveIdx = 0;
+    let activityTimer = null;
+
+    function buildActivityCarousel() {
+      activityTrack.innerHTML = activitySlides
+        .map(
+          (slide, idx) => `
+          <div
+            class="w-full h-full shrink-0 relative cursor-pointer"
+            onclick="openLightbox('${slide.image}', '${slide.title}', '${slide.fallback}')"
+          >
+            <img
+              src="${slide.image}"
+              alt="${slide.title}"
+              onerror="this.onerror=null;this.src='${slide.fallback}';"
+              class="w-full h-full ${slide.fitClass}"
+              loading="${idx === 0 ? 'eager' : 'lazy'}"
+            />
+          </div>`
+        )
+        .join('');
+
+      activityDots.innerHTML = activitySlides
+        .map(
+          (slide, idx) => `
+          <button
+            type="button"
+            data-activity-idx="${idx}"
+            aria-label="切換至活動花絮第 ${idx + 1} 張：${slide.title}"
+            class="activity-dot h-2.5 rounded-full transition-all duration-300 ${idx === 0 ? 'w-8 bg-brand-orange' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}"
+          ></button>`
+        )
+        .join('');
+
+      activityDots.querySelectorAll('.activity-dot').forEach((dot) => {
+        dot.addEventListener('click', () => {
+          goToActivitySlide(Number(dot.getAttribute('data-activity-idx')));
+          restartActivityTimer();
+        });
+      });
+
+      updateActivityCarouselUI();
+    }
+
+    function updateActivityCarouselUI() {
+      const current = activitySlides[activityActiveIdx];
+      activityTrack.style.transform = `translateX(-${activityActiveIdx * 100}%)`;
+      activityCounter.textContent = `${activityActiveIdx + 1} / ${activitySlides.length}`;
+      activityCaptionTitle.textContent = current.title;
+      activityCaptionDesc.textContent = current.desc;
+
+      activityDots.querySelectorAll('.activity-dot').forEach((dot, idx) => {
+        dot.className = `activity-dot h-2.5 rounded-full transition-all duration-300 ${
+          idx === activityActiveIdx ? 'w-8 bg-brand-orange' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+        }`;
+      });
+    }
+
+    function goToActivitySlide(idx) {
+      activityActiveIdx = (idx + activitySlides.length) % activitySlides.length;
+      updateActivityCarouselUI();
+    }
+
+    function startActivityTimer() {
+      stopActivityTimer();
+      activityTimer = setInterval(() => goToActivitySlide(activityActiveIdx + 1), 6000);
+    }
+
+    function stopActivityTimer() {
+      if (activityTimer) {
+        clearInterval(activityTimer);
+        activityTimer = null;
+      }
+    }
+
+    function restartActivityTimer() {
+      stopActivityTimer();
+      startActivityTimer();
+    }
+
+    activityPrevBtn.addEventListener('click', () => {
+      goToActivitySlide(activityActiveIdx - 1);
+      restartActivityTimer();
+    });
+
+    activityNextBtn.addEventListener('click', () => {
+      goToActivitySlide(activityActiveIdx + 1);
+      restartActivityTimer();
+    });
+
+    activityZoomBtn.addEventListener('click', () => {
+      const current = activitySlides[activityActiveIdx];
+      openLightbox(current.image, current.title, current.fallback);
+    });
+
+    activityCarouselEl.addEventListener('mouseenter', stopActivityTimer);
+    activityCarouselEl.addEventListener('mouseleave', startActivityTimer);
+
+    // 觸控左右滑動支援 (活動花絮輪播)
+    let activityTouchX = 0;
+    activityViewport.addEventListener('touchstart', (e) => {
+      activityTouchX = e.changedTouches[0].clientX;
+      stopActivityTimer();
+    }, { passive: true });
+
+    activityViewport.addEventListener('touchend', (e) => {
+      const diff = e.changedTouches[0].clientX - activityTouchX;
+      if (Math.abs(diff) > 45) {
+        goToActivitySlide(diff < 0 ? activityActiveIdx + 1 : activityActiveIdx - 1);
+      }
+      startActivityTimer();
+    }, { passive: true });
+
+    // =========================================================
+    // 4. 海報大圖燈箱 Modal 控制
+    // =========================================================
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+
+    function openLightbox(src, title, fallbackSrc) {
+      lightboxTitle.textContent = title || '海報大圖預覽';
+      lightboxImg.onerror = function () {
+        this.onerror = null;
+        this.src = fallbackSrc || POSTER_FALLBACK_URL;
+      };
+      lightboxImg.src = src;
+      lightboxModal.classList.remove('hidden');
+      lightboxModal.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.add('hidden');
+      lightboxModal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) closeLightbox();
+    });
+
+    // =========================================================
+    // 5. 課程簡章彈出視窗 (courseCatalog.license & steam)
+    // =========================================================
+    const courseCatalog = {
+      license: {
+        badge: '專業證照簡章',
+        title: '民航局無人機操作證考照輔導班',
+        date: '每月雙週末固定開班',
+        location: '桃園市中壢區合法培訓場地',
+        quota: '精緻小班制 4 人',
+        fee: 'NT$ 15,000／人',
+        syllabus: [
+          { tag: '學科法規', text: '民航法遙控無人機專章、空域圖資判讀、氣象與緊急處置標準作業程序精講。' },
+          { tag: '術科實操', text: '定點起降、四面停懸、八字水平圓與姿態模式（ATTI）穩定操控一對一指導。' },
+          { tag: '考前模擬', text: '1:1 還原民航局術科考場流程與評分標準，強化臨場穩定度與考照通過率。' },
+        ],
+        contactTitle: '考照專屬聯絡窗口',
+        contactName: '小呂教官',
+        phoneDisplay: '0980-111-995',
+        phoneHref: 'tel:0980111995',
+        email: 'uav.bst@gmail.com',
+      },
+      steam: {
+        badge: 'STEAM 教育營隊簡章',
+        title: '青少年無人機足球 STEAM 體驗營',
+        date: '每週六、日（半日／全日營）',
+        location: '中壢區中小學合作場地',
+        quota: '每梯次 24 名',
+        fee: 'NT$ 1,800／人',
+        syllabus: [
+          { tag: '航空科普', text: '認識無人機空氣動力學、飛控原理與飛行安全規範，建立正確航空科技素養。' },
+          { tag: '組裝實作', text: '親手認識無人機球形防護結構與基礎檢核，練習穩定起降與障礙穿越。' },
+          { tag: '團隊對戰', text: '分組體驗無人機足球攻防賽，培養空間感、溝通協調與團隊合作力。' },
+        ],
+        contactTitle: '營隊洽詢窗口',
+        contactName: '桃園市無人機協會活動組｜陳先生',
+        phoneDisplay: '0955-285-016',
+        phoneHref: 'tel:0955285016',
+        email: '',
+      },
+    };
+
+    const courseModal = document.getElementById('course-modal');
+
+    function openCourseModal(key) {
+      const item = courseCatalog[key];
+      if (!item) return;
+
+      document.getElementById('course-modal-badge').textContent = item.badge;
+      document.getElementById('course-modal-title').textContent = item.title;
+      document.getElementById('course-modal-date').textContent = item.date;
+      document.getElementById('course-modal-location').textContent = item.location;
+      document.getElementById('course-modal-quota').textContent = item.quota;
+      document.getElementById('course-modal-fee').textContent = item.fee;
+
+      document.getElementById('course-modal-syllabus').innerHTML = item.syllabus
+        .map(
+          (row) => `
+          <div class="flex flex-col sm:flex-row sm:items-start gap-1.5 sm:gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="inline-block shrink-0 px-2.5 py-0.5 rounded-lg bg-brand-blue text-white text-xs font-bold">${row.tag}</span>
+            <p class="text-slate-700 leading-relaxed">${row.text}</p>
+          </div>`
+        )
+        .join('');
+
+      document.getElementById('course-modal-contact').innerHTML = `
+        <p class="text-xs font-extrabold uppercase tracking-wider text-brand-emerald">${item.contactTitle}</p>
+        <p><strong class="text-brand-blue">聯絡窗口：</strong>${item.contactName}</p>
+        <p><strong class="text-brand-blue">聯絡電話：</strong><a href="${item.phoneHref}" class="font-bold text-brand-orangeDark hover:underline">${item.phoneDisplay}</a></p>
+        ${item.email ? `<p class="break-all"><strong class="text-brand-blue">電子信箱：</strong><a href="mailto:${item.email}" class="font-semibold text-brand-sky hover:underline">${item.email}</a></p>` : ''}
+      `;
+
+      document.getElementById('course-modal-actions').innerHTML = `
+        <button type="button" onclick="closeCourseModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-50 transition">
+          關閉視窗
+        </button>
+        ${item.email ? `<a href="mailto:${item.email}" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-sky hover:bg-sky-600 text-white font-bold text-sm transition"><i class="fa-solid fa-envelope"></i><span>寄信洽詢</span></a>` : ''}
+        <a href="${item.phoneHref}" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-orange hover:bg-brand-orangeDark text-white font-bold text-sm shadow-sm transition">
+          <i class="fa-solid fa-phone"></i>
+          <span>撥打電話報名</span>
+        </a>
+      `;
+
+      courseModal.classList.remove('hidden');
+      courseModal.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeCourseModal() {
+      courseModal.classList.add('hidden');
+      courseModal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    courseModal.addEventListener('click', (e) => {
+      if (e.target === courseModal) closeCourseModal();
+    });
+
+    // ESC 鍵關閉彈窗
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeCourseModal();
+      }
+    });
+
+    // 初始化雙輪播
+    window.addEventListener('DOMContentLoaded', () => {
+      buildCourseCarousel();
+      startCourseTimer();
+      buildActivityCarousel();
+      startActivityTimer();
+    });
+  </script>
+</body>
+</html>
